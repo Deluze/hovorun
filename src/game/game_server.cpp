@@ -35,7 +35,9 @@ game_server::game_server(asio::io_context &io, const app::config &config, app::a
       m_net(io,
             proudnet::server_config{.name = std::string(tag),
                                     .port = config.game_port,
-                                    .protocol_version = proudnet::game_protocol_version},
+                                    .protocol_version = proudnet::game_protocol_version,
+                                    .settings = {},
+                                    .timeout = std::chrono::seconds{90}},
             *this)
 {
     using enum clgs::id;

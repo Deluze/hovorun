@@ -4,8 +4,8 @@ project(hovorun_server LANGUAGES CXX)
 
 # C++26 (std::expected, std::print, deducing this, ranges::to, ...). The standard flag is set per target below
 # instead of CMAKE_CXX_STANDARD 26: CMake 3.30 (bundled with CLion 2024.2) has no C++26 flag for MSVC, and a
-# global setting also breaks CMake's own try_compile checks such as FindThreads.
-set(CMAKE_CXX_EXTENSIONS OFF)
+# global setting also breaks CMake's own try_compile checks such as FindThreads. Don't set CMAKE_CXX_EXTENSIONS
+# either: without a standard it makes CMake add the compiler's default -std=c++17 in front of ours.
 
 # Standalone Asio (no Boost). Prefer an installed package (e.g. vcpkg "asio"), otherwise fetch the headers.
 find_package(asio CONFIG QUIET)

@@ -133,7 +133,7 @@ void peer::read_loop()
         }
 
         self->touch();
-        self->m_parser.feed(std::span(self->m_read_buffer).first(bytes));
+        self->m_parser.feed(std::span<const uint8_t>{self->m_read_buffer}.first(bytes));
 
         // Drain complete frames; the parser keeps any partial frame for the next read.
         while (true)

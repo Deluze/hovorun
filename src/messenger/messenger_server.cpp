@@ -97,7 +97,9 @@ messenger_server::messenger_server(asio::io_context &io, const app::config &conf
       m_net(io,
             proudnet::server_config{.name = std::string(tag),
                                     .port = config.messenger_port,
-                                    .protocol_version = proudnet::messenger_protocol_version},
+                                    .protocol_version = proudnet::messenger_protocol_version,
+                                    .settings = {},
+                                    .timeout = std::chrono::seconds{90}},
             *this)
 {
 }

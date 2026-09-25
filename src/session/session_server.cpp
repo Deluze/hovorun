@@ -22,7 +22,9 @@ session_server::session_server(asio::io_context &io, const app::config &config, 
       m_net(io,
             proudnet::server_config{.name = std::string(tag),
                                     .port = config.session_port,
-                                    .protocol_version = proudnet::session_protocol_version},
+                                    .protocol_version = proudnet::session_protocol_version,
+                                    .settings = {},
+                                    .timeout = std::chrono::seconds{90}},
             *this)
 {
 }

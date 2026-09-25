@@ -58,7 +58,7 @@ public:
         if (m_buffer.size() < header)
             return std::unexpected(frame_error::incomplete);
 
-        message_reader r(std::span(m_buffer).subspan(2, header - 2));
+        message_reader r{std::span<const uint8_t>{m_buffer}.subspan(2, header - 2)};
         int64_t length = r.read_scalar();
         if (length < 0 || std::cmp_greater(length, max_frame_payload))
             return std::unexpected(frame_error::bad_length);
