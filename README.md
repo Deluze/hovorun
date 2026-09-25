@@ -1,6 +1,6 @@
 # Hovorun server
 
-A server for the Hovorun client (`Client5.exe`), written from scratch in C++26 with standalone Asio.
+A server for the Hovorun client, written from scratch in C++26 with standalone Asio.
 It speaks the client's old ProudNet protocol, reversed from the binary in Binary Ninja.
 
 One process runs all three servers the client talks to:
